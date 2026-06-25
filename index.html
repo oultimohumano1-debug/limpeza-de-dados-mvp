@@ -147,39 +147,34 @@
         </div>
     </div>
 
-   <script>
-        document.getElementById('formVarredura').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const btn = document.getElementById('btnEnviar');
-            btn.innerText = "Varrendo a web... Aguarde...";
-            btn.disabled = true;
+  <script>
+document.getElementById('formVarredura').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    var btn = document.getElementById('btnEnviar');
+    btn.innerText = "Enviando...";
+    btn.disabled = true;
 
-            const dados = {
-                nome: document.getElementById('nome').value,
-                whatsapp: document.getElementById('whatsapp').value,
-                cidade: document.getElementById('cidade').value,
-                cpf: document.getElementById('cpf').value
-            };
+    var dados = {
+        "nome": document.getElementById('nome').value,
+        "whatsapp": document.getElementById('whatsapp').value,
+        "cidade": document.getElementById('cidade').value,
+        "cpf": document.getElementById('cpf').value
+    };
 
-            const urlAppsScript = "https://script.google.com/macros/s/AKfycbxeFpAD8jdiwM50Xm4k_UUwXG4vQ2aBDRgCJWKaI3IYu3MORIjJ8fhbXnRT9W31nvNA0w/exec";
+    var url = "https://script.google.com/macros/s/AKfycbxeFpAD8jdiwM50Xm4k_UUwXG4vQ2aBDRgCJWKaI3IYu3MORIjJ8fhbXnRT9W31nvNA0w/exec";
 
-            fetch(urlAppsScript, {
-                method: "POST",
-                mode: "no-cors",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(dados)
-            })
-            .then(() => {
-                document.getElementById('formVarredura').style.display = 'none';
-                document.getElementById('mensagemSucesso').style.display = 'block';
-            })
-            .catch(error => {
-                alert("Erro ao enviar. Tente novamente.");
-                btn.innerText = "Iniciar Varredura";
-                btn.disabled = false;
-            });
-        });
-    </script>
+    fetch(url, {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify(dados)
+    }).then(function() {
+        document.getElementById('formVarredura').style.display = 'none';
+        document.getElementById('mensagemSucesso').style.display = 'block';
+    }).catch(function(err) {
+        alert("Erro, tente novamente.");
+        btn.innerText = "Iniciar Varredura";
+        btn.disabled = false;
+    });
+});
+</script>
