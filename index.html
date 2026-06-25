@@ -147,7 +147,7 @@
         </div>
     </div>
 
-    <script>
+   <script>
         document.getElementById('formVarredura').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -162,7 +162,6 @@
                 cpf: document.getElementById('cpf').value
             };
 
-            // URL corrigida com aspas e texto original
             const urlAppsScript = "https://script.google.com/macros/s/AKfycbxeFpAD8jdiwM50Xm4k_UUwXG4vQ2aBDRgCJWKaI3IYu3MORIjJ8fhbXnRT9W31nvNA0w/exec";
 
             fetch(urlAppsScript, {
@@ -178,12 +177,9 @@
                 document.getElementById('mensagemSucesso').style.display = 'block';
             })
             .catch(error => {
-                alert("Ocorreu um erro ao processar. Tente novamente.");
+                alert("Erro ao enviar. Tente novamente.");
                 btn.innerText = "Iniciar Varredura";
                 btn.disabled = false;
-                console.error(error);
             });
         });
     </script>
-</body>
-</html>
