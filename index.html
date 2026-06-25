@@ -141,6 +141,16 @@
         document.getElementById('formVarredura').addEventListener('submit', function(e) {
             e.preventDefault();
             
+<div id="mensagemSucesso">
+            <h3>✅ Busca Iniciada!</h3>
+            <p>Nossa inteligência artificial está rastreando a web. Em até 2 horas, você receberá o relatório completo no WhatsApp cadastrado.</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('formVarredura').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
             const btn = document.getElementById('btnEnviar');
             btn.innerText = "Varrendo a web... Aguarde...";
             btn.disabled = true;
@@ -152,7 +162,8 @@
                 cpf: document.getElementById('cpf').value
             };
 
-            const urlAppsScript = "[https://script.google.com/macros/s/AKfycbxeFpAD8jdiwM50Xm4k_UUwXG4vQ2aBDRgCJWKaI3IYu3MORIjJ8fhbXnRT9W3lnvNA0w/exec]";
+            // URL corrigida com aspas e texto original
+            const urlAppsScript = "https://script.google.com/macros/s/AKfycbxeFpAD8jdiwM50Xm4k_UUwXG4vQ2aBDRgCJWKaI3IYu3MORIjJ8fhbXnRT9W31nvNA0w/exec";
 
             fetch(urlAppsScript, {
                 method: "POST",
@@ -168,7 +179,6 @@
             })
             .catch(error => {
                 alert("Ocorreu um erro ao processar. Tente novamente.");
-                // Palavra removida do botão de reset de erro abaixo
                 btn.innerText = "Iniciar Varredura";
                 btn.disabled = false;
                 console.error(error);
