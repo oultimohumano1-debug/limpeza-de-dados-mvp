@@ -128,7 +128,7 @@
                 <input type="text" id="cpf" placeholder="Apenas números (Opcional)">
             </div>
             
-            <button type="submit" class="btn" id="btnEnviar">Iniciar Varredura Gratuita</button>
+            <button type="submit" class="btn" id="btnEnviar">Iniciar Varredura</button>
         </form>
 
         <div id="mensagemSucesso">
@@ -152,7 +152,6 @@
                 cpf: document.getElementById('cpf').value
             };
 
-            // Esta URL será atualizada na etapa 2 (Backend)
             const urlAppsScript = "URL_DO_SEU_APPS_SCRIPT_AQUI";
 
             fetch(urlAppsScript, {
@@ -169,7 +168,8 @@
             })
             .catch(error => {
                 alert("Ocorreu um erro ao processar. Tente novamente.");
-                btn.innerText = "Iniciar Varredura Gratuita";
+                // Palavra removida do botão de reset de erro abaixo
+                btn.innerText = "Iniciar Varredura";
                 btn.disabled = false;
                 console.error(error);
             });
